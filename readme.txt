@@ -9,14 +9,17 @@ Supercharge the WordPress admin panel with additional bulk actions to manage you
 
 == Description ==
 
-[(Advanced) Bulk Actions][https://wordpress.org/plugins/bulk-actions/] is a WordPress plugin that adds new bulk actions to your admin panel on the posts, pages and users overviews. It works with custom post types.
+[(Advanced) Bulk Actions](https://wordpress.org/plugins/bulk-actions/) is a WordPress plugin that adds new bulk actions to your admin panel on the posts, pages and users overviews. It works with custom post types.
+
+> This plugin **works only with WordPress versions 4.7+** and is in active development. The objective to is to implement a wide range of useful bulk actions.
+> Feedback is highly appreciated: if you have any suggestions regarding bulk actions, please [create a new topic in the support forums](https://wordpress.org/support/plugin/bulk-actions#new-post). Thank you!
 
 With this plugin, you can easily switch the post types of multiple posts at once, and other bulk actions are added dependent on user demand. The plugin relies on functionality introduced in WordPress 4.7, so be sure you've updated WordPress to version 4.7 before installing this plugin!
 
 = Features: bulk actions =
-* Change post type for multiple posts at once
-** Change post type to any other post type
-** Works for posts, pages and custom post types
+*	Change post type for multiple posts at once
+*	= Change post type to any other post type
+*	= Works for posts, pages and custom post types
 
 == Installation ==
 
