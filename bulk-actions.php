@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Advanced Bulk Actions
-Version: 1.0 
+Version: 0.1beta
 Author: Jesper van Engelen
 Author URI: http://jespervanengelen.com
 Text Domain: wpba
