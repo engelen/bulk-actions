@@ -34,6 +34,7 @@ class WPBA_ListScreen_Post extends WPBA_ListScreen_Abstract {
 	 */
 	public function register_default_bulk_actions() {
 		$this->add_bulkaction( new WPBA_BulkAction_ChangePostType() );
+		$this->add_bulkaction( new WPBA_BulkAction_ChangePostVisibility() );
 	}
 
 }

@@ -2,3 +2,5 @@
   display: inline; }
   .wpba-actions-settings .wpba-action-settings {
     display: inline; }
+    .wpba-actions-settings .wpba-action-settings input[type="text"] {
+      height: 28px; }

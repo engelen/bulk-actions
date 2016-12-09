@@ -3,10 +3,37 @@ function wpba_getActionTemplate( action ) {
 	var el_template = jQuery( '#' + element_id );
 
 	if ( el_template.length ) {
-		return el_template.html()
+		return el_template.html();
 	}
 
 	return '';
+}
+
+function wpba_createActionSettings( action ) {
+	var template = wpba_getActionTemplate( action );
+
+	if ( template ) {
+		// Fetch template and wrap it
+		var action_settings = jQuery( '<div class="wpba-action-settings wpba-settings-' + action + '" />' );
+		action_settings.html( template );
+
+		// Handle JavaScript hooks for the action settings
+		action_settings.find( '.wpba-conditional' ).each( function() {
+			var group = jQuery( this ).attr( 'data-wpba-conditional-group' );
+
+			if ( group ) {
+				var dependents = action_settings.find( '*[data-wpba-conditional-group="' + group + '"]' ).not( '.wpba-conditional' );
+				dependents.hide();
+
+				jQuery( this ).change( function() {
+					dependents.hide();
+					dependents.filter( '*[data-wpba-conditional-value="' + this.value + '"]' ).show();
+				} );
+			}
+		} );
+
+		return action_settings;
+	}
 }
 
 /**
@@ -33,19 +60,17 @@ function wpba_handleBulkActions( dropdown ) {
 
 		// Create settings element if it doesn't exist yet
 		if ( ! action_settings.length ) {
-			var template = wpba_getActionTemplate( action );
+			action_settings = wpba_createActionSettings( action );
 
-			if ( template ) {
-				action_settings = jQuery( '<div class="wpba-action-settings wpba-settings-' + action + '" />' );
-				action_settings.html( template );
+			if ( action_settings ) {
+				// Add the settings element to the settings box
 				settings.append( action_settings );
-				action_settings.show();
 			}
 		}
 		else {
 			action_settings.show();
 		}
-	} );
+	} ).trigger( 'change' );
 }
 
 jQuery( document ).ready( function( $ ) {
