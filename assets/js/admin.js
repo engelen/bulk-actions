@@ -50,4 +50,5 @@ function wpba_handleBulkActions( dropdown ) {
 
 jQuery( document ).ready( function( $ ) {
 	wpba_handleBulkActions( $( '#bulk-action-selector-top' ) );
+	wpba_handleBulkActions( $( '#bulk-action-selector-bottom' ) );
 } );
