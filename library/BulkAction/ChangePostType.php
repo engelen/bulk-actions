@@ -11,7 +11,7 @@ class WPBA_BulkAction_ChangePostType extends WPBA_BulkAction_Abstract {
 	 */
 	public function __construct() {
 		$this->label = __( 'Change post type', 'wpba' );
-		$this->action = 'change-post-type';;
+		$this->action = 'change-post-type';
 	}
 
 	/**
