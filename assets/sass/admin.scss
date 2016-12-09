@@ -3,5 +3,9 @@
 
 	.wpba-action-settings {
 		display: inline;
+
+		input[type="text"] {
+			height: 28px;
+		}
 	}
 }
