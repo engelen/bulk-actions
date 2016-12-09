@@ -39,6 +39,8 @@ abstract class WPBA_ListScreen_Abstract {
 		add_filter( "bulk_actions-{$this->screen}", array( $this, 'filter_bulk_actions' ) );
 		add_filter( "handle_bulk_actions-{$this->screen}", array( $this, 'handle_bulk_actions' ), 10, 3 );
 		add_action( 'admin_notices', array( $this, 'admin_notices' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, 'scripts' ) );
+		add_action( 'admin_print_footer_scripts', array( $this, 'templates' ) );
 	}
 
 	/**
@@ -63,8 +65,22 @@ abstract class WPBA_ListScreen_Abstract {
 	 */
 	public function handle_bulk_actions( $redirect_to, $action, $items ) {
 		if ( isset( $this->_bulk_actions[ $action ] ) ) {
-			$location_params = $this->_bulk_actions[ $action ]->handle( $items );
+			$bulk_action = $this->_bulk_actions[ $action ];
 
+			// Extract additional parameters specific to this bulk action from the request
+			$additional_params = array();
+			$prefix = $bulk_action->get_form_element_name_prefix();
+
+			foreach ( $_REQUEST as $key => $value ) {
+				if ( substr( $key, 0, strlen( $prefix ) ) == $prefix ) {
+					$additional_params[ substr( $key, strlen( $prefix ) ) ] = $value;
+				}
+			}
+
+			// Let the bulk action handle the execution
+			$location_params = $bulk_action->handle( $items, $additional_params );
+
+			// Redirect to the results page
 			$query_args = array( $action => $location_params );
 			$redirect_to = add_query_arg( $query_args, $redirect_to );
 		}
@@ -78,7 +94,7 @@ abstract class WPBA_ListScreen_Abstract {
 	 * @since 1.0
 	 */
 	public function admin_notices() {
-		if ( ! get_current_screen()->id == $this->screen ) {
+		if ( ! $this->is_current_screen() ) {
 			return;
 		}
 
@@ -101,12 +117,67 @@ abstract class WPBA_ListScreen_Abstract {
 	}
 
 	/**
+	 * Whether the current list screen is this list screen
+	 *
+	 * @return bool True if we're on the list screen associated with this class, false otherwise
+	 */
+	public function is_current_screen() {
+		return get_current_screen()->id == $this->screen;
+	}
+
+	/**
 	 * Register a bulk action to this list screen
 	 *
 	 * @since 1.0
 	 */
 	public function add_bulkaction( $bulkaction ) {
 		$this->_bulk_actions[ $bulkaction->get_action() ] = $bulkaction;
+	}
+
+	/**
+	 * Register and enqueue admin scripts
+	 *
+	 * @since 1.0
+	 */
+	public function scripts() {
+		if ( $this->is_current_screen() ) {
+			wp_enqueue_script( 'wpba-admin', WPBA_PLUGIN_URL . 'assets/js/admin.js', array( 'jquery' ) );
+			wp_enqueue_style( 'wpba-admin', WPBA_PLUGIN_URL . 'assets/css/admin.css' );
+		}
+	}
+
+	/**
+	 * Output bulk actions' HTML templates for use in JavaScript
+	 *
+	 * @since 1.0
+	 */
+	public function templates() {
+		if ( $this->is_current_screen() ) {
+			foreach ( $this->_bulk_actions as $bulkaction ) {
+				$this->bulkaction_template( $bulkaction );
+			}
+		}
+	}
+
+	/**
+	 * Output the template for a single bulk action
+	 *
+	 * @since 1.0
+	 * 
+	 * @param WPBA_BulkAction_Abstract $bulkaction Bulk action object
+	 */
+	public function bulkaction_template( $bulkaction ) {
+		ob_start();
+		$bulkaction->template();
+		$output = ob_get_clean();
+
+		if ( ! $output ) {
+			return;
+		}
+
+		echo '<script type="text/html" class="wpba-template" id="wpba-template-' . esc_attr( $bulkaction->get_action() ) . '">';
+		echo $output;
+		echo '</script>';
 	}
 
 }

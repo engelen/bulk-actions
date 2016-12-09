@@ -33,17 +33,7 @@ class WPBA_ListScreen_Post extends WPBA_ListScreen_Abstract {
 	 * @since 1.0
 	 */
 	public function register_default_bulk_actions() {
-		$post_types = get_post_types( array( '_builtin' => false, 'show_ui' => true ) );
-		$post_types[] = 'post';
-		$post_types[] = 'page';
-
-		foreach ( $post_types as $post_type ) {
-			if ( $post_type == $this->post_type ) {
-				continue;
-			}
-
-			$this->add_bulkaction( new WPBA_BulkAction_ChangePostType( $post_type ) );
-		}
+		$this->add_bulkaction( new WPBA_BulkAction_ChangePostType() );
 	}
 
 }
