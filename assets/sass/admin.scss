@@ -7,5 +7,34 @@
 		input[type="text"] {
 			height: 28px;
 		}
+
+		.button {
+			display: inline-block;
+			margin: 1px 0 0 0;
+		}
+
+		&.wpba-settings-change-featured-image {
+			.wpba-current-image {
+				display: inline-block;
+				margin-top: 1px;
+
+				img {
+					display: block;
+					width: 28px;
+					border: 1px solid #CCC;
+					box-sizing: border-box;
+					border-radius: 3px;
+				}
+			}
+		}
+	}
+}
+
+.notice.updated .wpba-featured-image {
+	display: block;
+
+	img {
+		display: block;
+		height: 40px;
 	}
 }

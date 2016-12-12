@@ -27,14 +27,37 @@ class WPBA_ListScreen_Post extends WPBA_ListScreen_Abstract {
 	}
 
 	/**
-	 * Register BAs default bulk actions for this list screen
-	 *
 	 * @see WPBA_ListScreen_Abstract::register_default_bulk_actions()
 	 * @since 1.0
 	 */
 	public function register_default_bulk_actions() {
-		$this->add_bulkaction( new WPBA_BulkAction_ChangePostType() );
-		$this->add_bulkaction( new WPBA_BulkAction_ChangePostVisibility() );
+		$this->add_bulkaction( new WPBA_BulkAction_Post_ChangePostType() );
+		$this->add_bulkaction( new WPBA_BulkAction_Post_ChangePostVisibility() );
+		$this->add_bulkaction( new WPBA_BulkAction_Post_ChangeFeaturedImage() );
+	}
+
+	/**
+	 * @see WPBA_ListScreen_Abstract::scripts()
+	 * @since 1.0
+	 */
+	public function scripts() {
+		if ( $this->is_current_screen() ) {
+			wp_enqueue_media();
+		}
+
+		parent::scripts();
+	}
+
+	/**
+	 * @see WPBA_ListScreen_Abstract::get_javascript_parameters()
+	 * @since 1.0
+	 */
+	public function get_javascript_parameters() {
+		return array(
+			'i18n' => array(
+				'change_featured_image_title' => __( 'Bulk Action: Featured Image for Selected Posts' )
+			)
+		);
 	}
 
 }

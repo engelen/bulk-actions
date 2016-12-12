@@ -32,9 +32,77 @@ function wpba_createActionSettings( action ) {
 			}
 		} );
 
+		// Handle additional callbacks for action settings
+		action_settings.wpba_actionSettings_handleCallbacks( action );
+
 		return action_settings;
 	}
 }
+
+function wpba_getSmallestSquareImage( sizes ) {
+	var smallest_image_size = -1;
+	var smallest_image_square = false;
+	var smallest_image_name = "";
+
+	for ( size in sizes ) {
+		var details = sizes[ size ];
+
+		if ( details.width == details.height ) {
+			if ( ! smallest_image_square ) {
+				smallest_image_size = details.width * details.height;
+				smallest_image_square = true;
+				smallest_image_name = size;
+			}
+			else if ( size.width * size.height < smallest_image_size ) {
+				smallest_image_size = details.width * details.height;
+				smallest_image_name = size;
+			}
+		}
+		else if ( ! smallest_image_square && size.width * size.height < smallest_image_size ) {
+			smallest_image_size = size.width * size.height;
+			smallest_image_name = size;
+		}
+	}
+
+	return smallest_image_name;
+}
+
+jQuery.fn.wpba_actionSettings_handleCallbacks = function( action ) {
+	// Action: featured image
+	if ( action === 'change-featured-image' ) {
+		jQuery( this ).wpba_actionSettings_handleCallbacks_ChangeFeaturedImage();
+	}
+};
+
+jQuery.fn.wpba_actionSettings_handleCallbacks_ChangeFeaturedImage = function() {
+	var settings = jQuery( this );
+	var frame;
+
+	jQuery( this ).find( '.wpba-select-image' ).click( function() {
+		if ( ! frame ) {
+			frame = wp.media( {
+				title: WPBA.i18n.change_featured_image_title
+			} );
+
+			frame.on( 'select', function() {
+				// Get details of selected image
+				var attachment = frame.state().get( 'selection' ).first().toJSON();
+
+				// Change input for featured image ID in form
+				settings.find( '.wpba-input' ).val( attachment.id );
+
+				// Create image element
+				var img = jQuery( '<img />' );
+				img.attr( 'src', attachment.sizes[ wpba_getSmallestSquareImage( attachment.sizes ) ].url );
+
+				// Show current image
+				settings.find( '.wpba-current-image' ).html( '' ).append( img );
+			} );
+		}
+		
+		frame.open();
+	} );
+};
 
 /**
  * Handle Bulk Actions client-side for bulk actions dropdown element

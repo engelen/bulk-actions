@@ -144,6 +144,24 @@ abstract class WPBA_ListScreen_Abstract {
 			wp_enqueue_script( 'wpba-admin', WPBA_PLUGIN_URL . 'assets/js/admin.js', array( 'jquery' ) );
 			wp_enqueue_style( 'wpba-admin', WPBA_PLUGIN_URL . 'assets/css/admin.css' );
 		}
+
+		// Localize script
+		$defaults = array(
+			'i18n' => array()
+		);
+
+		wp_localize_script( 'wpba-admin', 'WPBA', array_merge_recursive( $defaults, $this->get_javascript_parameters() ) );
+	}
+
+	/**
+	 * Get parameters to be passed to the admin JavaScript through wp_localize_script
+	 *
+	 * @since 1.0
+	 *
+	 * @return array
+	 */
+	public function get_javascript_parameters() {
+		return array();
 	}
 
 	/**

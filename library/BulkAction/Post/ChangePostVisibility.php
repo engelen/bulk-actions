@@ -2,7 +2,7 @@
 /**
  * @since 1.0
  */
-class WPBA_BulkAction_ChangePostVisibility extends WPBA_BulkAction_Abstract {
+class WPBA_BulkAction_Post_ChangePostVisibility extends WPBA_BulkAction_Abstract {
 
 	/**
 	 * Constructor. Initialize bulk action properties
