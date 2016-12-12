@@ -6,6 +6,7 @@ Beta version of a WordPress plugin that adds additional bulk actions to the exis
 ### Implemented bulk actions
 - Change post type
 - Change post visibility status (Public, Password protected, Private)
+- Change post featured image
 
 [1]: https://make.wordpress.org/core/2016/10/04/custom-bulk-actions/
 [2]: https://github.com/engelen/bulk-actions/issues/new
