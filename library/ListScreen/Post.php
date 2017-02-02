@@ -32,6 +32,7 @@ class WPBA_ListScreen_Post extends WPBA_ListScreen_Abstract {
 	 */
 	public function register_default_bulk_actions() {
 		$this->add_bulkaction( new WPBA_BulkAction_Post_ChangePostType() );
+		$this->add_bulkaction( new WPBA_BulkAction_Post_ChangePostStatus() );
 		$this->add_bulkaction( new WPBA_BulkAction_Post_ChangePostVisibility() );
 
 		if ( post_type_supports( $this->post_type, 'thumbnail' ) ) {
