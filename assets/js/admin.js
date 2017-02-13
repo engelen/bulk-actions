@@ -44,10 +44,10 @@ function wpba_getSmallestSquareImage( sizes ) {
 	var smallest_image_square = false;
 	var smallest_image_name = "";
 
-	for ( size in sizes ) {
+	for ( var size in sizes ) {
 		var details = sizes[ size ];
 
-		if ( details.width == details.height ) {
+		if ( details.width === details.height ) {
 			if ( ! smallest_image_square ) {
 				smallest_image_size = details.width * details.height;
 				smallest_image_square = true;
@@ -137,6 +137,17 @@ function wpba_handleBulkActions( dropdown ) {
 		}
 		else {
 			action_settings.show();
+		}
+
+		if ( action_settings ) {
+			// Add temporary highlight to highlightable elements
+			action_settings.find( '.highlightable' ).addClass( 'temporary-highlight' ).delay( 500 ).queue( function( next ) {
+				jQuery( this ).removeClass( 'temporary-highlight' );
+				next();
+			} );
+
+			// Focus on first input element
+			action_settings.find( 'input, select' ).first().focus();
 		}
 	} ).trigger( 'change' );
 }

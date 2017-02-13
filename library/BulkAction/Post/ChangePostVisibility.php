@@ -10,7 +10,7 @@ class WPBA_BulkAction_Post_ChangePostVisibility extends WPBA_BulkAction_Abstract
 	 * @since 1.0
 	 */
 	public function __construct() {
-		$this->label = __( 'Change post visibility', 'wpba' );
+		$this->label = __( 'Change post visibility...', 'wpba' );
 		$this->action = 'change-post-visibility';
 	}
 

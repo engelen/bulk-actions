@@ -16,6 +16,13 @@
         border: 1px solid #CCC;
         box-sizing: border-box;
         border-radius: 3px; }
+  .wpba-actions-settings .highlightable {
+    -webkit-transition: border-color 1s;
+    -moz-transition: border-color 1s;
+    -o-transition: border-color 1s;
+    transition: border-color 1s; }
+    .wpba-actions-settings .highlightable.temporary-highlight {
+      border-color: #00a0d2; }
 
 .notice.updated .wpba-featured-image {
   display: block; }

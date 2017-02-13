@@ -10,7 +10,7 @@ class WPBA_BulkAction_Post_ChangePostStatus extends WPBA_BulkAction_Abstract {
 	 * @since 1.0
 	 */
 	public function __construct() {
-		$this->label = __( 'Change post status', 'wpba' );
+		$this->label = __( 'Change post status...', 'wpba' );
 		$this->action = 'change-post-status';
 	}
 
@@ -87,7 +87,7 @@ class WPBA_BulkAction_Post_ChangePostStatus extends WPBA_BulkAction_Abstract {
 		}
 
 		?>
-		<select name="<?php echo esc_attr( $this->get_form_element_name( 'post_status' ) ); ?>">
+		<select name="<?php echo esc_attr( $this->get_form_element_name( 'post_status' ) ); ?>" class="highlightable">
 			<?php foreach( $options as $value => $label ): ?>
 				<option value="<?php echo esc_attr( $value ); ?>"><?php echo esc_html( $label ); ?></option>
 			<?php endforeach; ?>
