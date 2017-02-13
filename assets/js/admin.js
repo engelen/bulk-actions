@@ -126,7 +126,7 @@ function wpba_handleBulkActions( dropdown ) {
 
 		// Try to find existing settings element
 		var action = this.value;
-		var action_settings = container.find( 'wpba-settings-' + action );
+		var action_settings = container.find( '.wpba-settings-' + action );
 
 		// Create settings element if it doesn't exist yet
 		if ( ! action_settings.length ) {
