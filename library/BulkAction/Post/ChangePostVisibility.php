@@ -123,6 +123,7 @@ class WPBA_BulkAction_Post_ChangePostVisibility extends WPBA_BulkAction_Abstract
 		$options = $this->get_visibility_options();
 		?>
 		<select name="<?php echo esc_attr( $this->get_form_element_name( 'post_visibility' ) ); ?>" class="wpba-conditional highlightable" data-wpba-conditional-group="wpba-post-visibility">
+			<option value=""><?php _e( 'None' ); ?></option>
 			<?php foreach( $options as $value => $label ): ?>
 				<option value="<?php echo esc_attr( $value ); ?>"><?php echo esc_html( $label ); ?></option>
 			<?php endforeach; ?>
