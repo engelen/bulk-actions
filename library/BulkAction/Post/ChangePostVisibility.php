@@ -122,7 +122,7 @@ class WPBA_BulkAction_Post_ChangePostVisibility extends WPBA_BulkAction_Abstract
 	public function template() {
 		$options = $this->get_visibility_options();
 		?>
-		<select name="<?php echo esc_attr( $this->get_form_element_name( 'post_visibility' ) ); ?>" class="wpba-conditional" data-wpba-conditional-group="wpba-post-visibility">
+		<select name="<?php echo esc_attr( $this->get_form_element_name( 'post_visibility' ) ); ?>" class="wpba-conditional highlightable" data-wpba-conditional-group="wpba-post-visibility">
 			<?php foreach( $options as $value => $label ): ?>
 				<option value="<?php echo esc_attr( $value ); ?>"><?php echo esc_html( $label ); ?></option>
 			<?php endforeach; ?>

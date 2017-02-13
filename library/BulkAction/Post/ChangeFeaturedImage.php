@@ -95,7 +95,7 @@ class WPBA_BulkAction_Post_ChangeFeaturedImage extends WPBA_BulkAction_Abstract 
 	 */
 	public function template() {
 		?>
-		<a href="#" class="wpba-select-image button"><?php _e( 'Select image', 'wpba' ); ?></a>
+		<a href="#" class="wpba-select-image button highlightable"><?php _e( 'Select image', 'wpba' ); ?></a>
 		<div class="wpba-current-image"></div>
 		<input type="hidden" name="<?php echo esc_attr( $this->get_form_element_name( 'featured_image' ) ); ?>" class="wpba-input" value="" />
 		<?php
