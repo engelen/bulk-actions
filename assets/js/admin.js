@@ -107,6 +107,8 @@ jQuery.fn.wpba_actionSettings_handleCallbacks_ChangeFeaturedImage = function() {
 /**
  * Handle Bulk Actions client-side for bulk actions dropdown element
  *
+ * @since 1.0
+ *
  * @param object dropdown jQuery object for the bulk actions dropdown element
  */
 function wpba_handleBulkActions( dropdown ) {
@@ -150,6 +152,31 @@ function wpba_handleBulkActions( dropdown ) {
 			action_settings.find( 'input, select' ).first().focus();
 		}
 	} ).trigger( 'change' );
+
+	// Handle form submit
+	dropdown.parents( '.bulkactions' ).find( ':submit' ).click( function() {
+		jQuery( this ).parents( 'form' ).find( ':submit' ).removeClass( 'submitting' );
+		jQuery( this ).addClass( 'submitting' );
+	} );
+
+	dropdown.parents( 'form' ).submit( function() {
+		if ( dropdown.parents( '.bulkactions' ).find( '.submitting' ).length ) {
+			
+		}
+	} );
+}
+
+/**
+ * Handle submitting of bulk actions form
+ *
+ * @since 1.1
+ *
+ * @param object form Form element jQuery object
+ */
+function wpba_handleBulkActionsSubmit( form ) {
+	form.submit( function() {
+
+	} );
 }
 
 jQuery( document ).ready( function( $ ) {
