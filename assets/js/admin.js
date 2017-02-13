@@ -161,21 +161,8 @@ function wpba_handleBulkActions( dropdown ) {
 
 	dropdown.parents( 'form' ).submit( function() {
 		if ( dropdown.parents( '.bulkactions' ).find( '.submitting' ).length ) {
-			
+
 		}
-	} );
-}
-
-/**
- * Handle submitting of bulk actions form
- *
- * @since 1.1
- *
- * @param object form Form element jQuery object
- */
-function wpba_handleBulkActionsSubmit( form ) {
-	form.submit( function() {
-
 	} );
 }
 
