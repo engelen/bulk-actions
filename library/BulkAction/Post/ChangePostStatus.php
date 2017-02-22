@@ -87,7 +87,7 @@ class WPBA_BulkAction_Post_ChangePostStatus extends WPBA_BulkAction_Abstract {
 		}
 
 		?>
-		<select name="<?php echo esc_attr( $this->get_form_element_name( 'post_status' ) ); ?>" class="highlightable">
+		<select name="<?php echo esc_attr( $this->get_form_element_name( 'post_status' ) ); ?>" class="required highlightable">
 			<option value=""><?php _e( 'None' ); ?></option>
 			<?php foreach( $options as $value => $label ): ?>
 				<option value="<?php echo esc_attr( $value ); ?>"><?php echo esc_html( $label ); ?></option>

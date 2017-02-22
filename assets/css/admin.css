@@ -23,6 +23,8 @@
     transition: border-color 1s; }
     .wpba-actions-settings .highlightable.temporary-highlight {
       border-color: #00a0d2; }
+    .wpba-actions-settings .highlightable.highlight-error {
+      border-color: #d54e21; }
 
 .notice.updated .wpba-featured-image {
   display: block; }

@@ -159,9 +159,29 @@ function wpba_handleBulkActions( dropdown ) {
 		jQuery( this ).addClass( 'submitting' );
 	} );
 
-	dropdown.parents( 'form' ).submit( function() {
-		if ( dropdown.parents( '.bulkactions' ).find( '.submitting' ).length ) {
+	dropdown.parents( 'form' ).submit( function( e ) {
+		var active_container = dropdown.parents( '.bulkactions' ).find( '.submitting' ).parents( '.bulkactions' ).find( '.wpba-action-settings:visible' );
 
+		if ( active_container.length ) {
+			var success = true;
+
+			active_container.find( 'input.required, select.required' ).each( function() {
+				if ( jQuery( this ).val() === '' ) {
+					success = false;
+
+					if ( jQuery( this ).is( '.highlightable' ) ) {
+						jQuery( this ).addClass( 'highlight-error' );
+
+						jQuery( this ).one( 'focus', function() {
+							jQuery( this ).removeClass( 'highlight-error' );
+						} );
+					}
+				}
+			} );
+
+			if ( ! success ) {
+				e.preventDefault();
+			}
 		}
 	} );
 }

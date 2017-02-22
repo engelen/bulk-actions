@@ -38,6 +38,10 @@
 		&.temporary-highlight {
 			border-color: #00a0d2;
 		}
+
+		&.highlight-error {
+			border-color: #d54e21;
+		}
 	}
 }
 
