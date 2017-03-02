@@ -1,6 +1,7 @@
 <?php
 /*
 Plugin Name: Advanced Bulk Actions
+Description: Supercharge the WordPress admin panel with additional bulk actions to manage your content. Advanced Bulk Actions supports pages, posts and custom post types. Update post status, visibility, featured image and post type for multiple posts at once.
 Version: 1.1
 Author: Jesper van Engelen
 Author URI: http://jespervanengelen.com
