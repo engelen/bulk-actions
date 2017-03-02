@@ -14,12 +14,13 @@ Supercharge the WordPress admin panel with additional bulk actions to manage you
 > This plugin **works only with WordPress versions 4.7+** and is in active development. The objective to is to implement a wide range of useful bulk actions.
 > Feedback is highly appreciated: if you have any suggestions regarding bulk actions, please [create a new topic in the support forums](https://wordpress.org/support/plugin/bulk-actions#new-post). Thank you!
 
-With this plugin, you can easily switch the post types, change the featured image, or change the post visibility, of multiple posts at once.
+With this plugin, you can easily switch the post types, change the featured image, or change the post visibility or status, of multiple posts at once.
 
 = Features: bulk actions =
 *	Change post type
 *	Change featured image
 *	Change post visibility
+*	Change post status
 
 == Installation ==
 
@@ -33,6 +34,12 @@ With this plugin, you can easily switch the post types, change the featured imag
 2. Change featured image for multiple posts at once
 
 == Changelog ==
+
+= 1.1 =
+* Added bulk action for changing post status
+* Restore state of previously opened custom bulk action when switching back from another bulk action
+* Add visual indicator to bulk action secondary dropdown or input when it appears
+* Add default "None" option to 2nd-tier bulk action settings
 
 = 1.0 =
 * First full release. Includes actions for post type, featured image and post visibility
