@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Advanced Bulk Actions
-Version: 1.0
+Version: 1.1
 Author: Jesper van Engelen
 Author URI: http://jespervanengelen.com
 Text Domain: wpba
@@ -25,7 +25,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if access directly
 
-define( 'WPBA_VERSION', '1.0' );
+define( 'WPBA_VERSION', '1.1' );
 define( 'WPBA_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'WPBA_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 
@@ -54,7 +54,7 @@ class WPBA {
 	 * @access protected
 	 * @since 1.0
 	 */
-	protected $version = '1.0';
+	protected $version = '1.1';
 
 	/**
 	 * List screen objects

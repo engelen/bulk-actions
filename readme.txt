@@ -3,7 +3,7 @@ Contributors: engelen
 Tags: bulk actions,bulk,actions,admin,advanced bulk actions,post type,bulk post type,change post type,change,post,type
 Requires at least: 4.7
 Tested up to: 4.7
-Stable tag: 1.0
+Stable tag: 1.1
 
 Supercharge the WordPress admin panel with additional bulk actions to manage your content
 
