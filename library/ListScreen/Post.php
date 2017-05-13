@@ -59,7 +59,7 @@ class WPBA_ListScreen_Post extends WPBA_ListScreen_Abstract {
 	public function get_javascript_parameters() {
 		return array(
 			'i18n' => array(
-				'change_featured_image_title' => __( 'Bulk Action: Featured Image for Selected Posts' )
+				'change_featured_image_title' => __( 'Bulk Action: Featured Image for Selected Posts', 'wpba' )
 			)
 		);
 	}
