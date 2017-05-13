@@ -3,7 +3,7 @@ Contributors: engelen
 Tags: bulk actions,bulk,actions,admin,advanced bulk actions,post type,bulk post type,change post type,change,post,type
 Requires at least: 4.7
 Tested up to: 4.7
-Stable tag: 1.1
+Stable tag: 1.1.1
 
 Supercharge the WordPress admin panel with additional bulk actions to manage your content
 
@@ -34,6 +34,10 @@ With this plugin, you can easily switch the post types, change the featured imag
 2. Change featured image for multiple posts at once
 
 == Changelog ==
+
+= 1.1.1 =
+* Localization fix for featured image JavaScript
+* Added feedback notification for feature suggestions etc.
 
 = 1.1 =
 * Added bulk action for changing post status
