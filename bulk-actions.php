@@ -115,6 +115,8 @@ class WPBA {
 			// Register and attach list screens
 			$this->register_list_screens();
 			$this->attach_list_screens();
+
+			new WPBA_AdminFeedback();
 		}
 	}
 	
@@ -207,23 +209,43 @@ class WPBA {
 		$version = $this->get_version();
 		$db_version = get_option( 'wpba_version' );
 		
-		$difference = version_compare( $db_version, $version );
-		
-		if ( $difference != 0 ) {
-			// Upgrade plugin
-			
-			// Save new version
-			update_option( 'wpba_version', $version );
+		// First install
+		if ( ! $db_version ) {
+			// First install
+
+			// Save timestamp at which the plugin was installed (does nothing if it already exists)
+			add_option( 'wpba_installed_timestamp', time() );
+
+			// Save version
+			add_option( 'wpba_version', $version );
 
 			/**
-			 * Fires after the plugin is upgraded to a newer version.
+			 * Fires after the plugin is first installed
 			 *
-			 * @since 1.0
-			 *
-			 * @param string $old_version Plugin version before the upgrade
-			 * @param string $new_version Plugin version after the upgrade
+			 * @since 1.1.1
 			 */
-			do_action( 'wpba/after_upgrade', $db_version, $version );
+			do_action( 'wpba/after_install' );
+		}
+		else {
+			// Check whether the plugin has been upgraded
+			$difference = version_compare( $db_version, $version );
+			
+			if ( $difference != 0 ) {
+				// Upgrade plugin
+				
+				// Save new version
+				update_option( 'wpba_version', $version );
+
+				/**
+				 * Fires after the plugin is upgraded to a newer version.
+				 *
+				 * @since 1.0
+				 *
+				 * @param string $old_version Plugin version before the upgrade
+				 * @param string $new_version Plugin version after the upgrade
+				 */
+				do_action( 'wpba/after_upgrade', $db_version, $version );
+			}
 		}
 	}
 	
