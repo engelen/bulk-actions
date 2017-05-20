@@ -65,21 +65,6 @@ class WPBA {
 	 * @since 1.0
 	 */
 	private $_list_screens = array();
-
-	/**
-	 * Get the admin class instance, instantiating it if it doesn't exist yet
-	 *
-	 * @since 1.0
-	 *
-	 * @return WPBA_Admin Admin class instance
-	 */
-	public function admin() {
-		if ( ! $this->_admin ) {
-			$this->_admin = new WPBA_Admin( $this );
-		}
-
-		return $this->_admin;
-	}
 	
 	/**
 	 * Initialize
