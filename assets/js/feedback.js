@@ -7,7 +7,6 @@ jQuery( document ).ready( function( $ ) {
 	} );
 
 	$( '#wpba-notice-feedback' ).on( 'click', '.notice-dismiss', function() {
-		console.log('asd');
 		jQuery.post( ajaxurl, { 
 			'action': 'wpba/dismiss_notice',
 			'notice_id': 'feedback',
