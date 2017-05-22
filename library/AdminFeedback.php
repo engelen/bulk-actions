@@ -25,6 +25,12 @@ class WPBA_AdminFeedback {
 	 * @return bool Whether the feedback notice should be displayed
 	 */
 	public function is_feedback_notice_active() {
+		// Check whether the current user has sufficient capabilities for the notice to be displayed
+		if ( ! current_user_can( 'manage_options' ) ) {
+			return false;
+		}
+
+		// Check whether the plugin has been installed long enough for the notice to be displayed
 		$plugin_installed = get_option( 'wpba_installed_timestamp' );
 
 		if ( $plugin_installed && ( time() - $plugin_installed ) <= 60 * 60 * 24 * 7 ) {
