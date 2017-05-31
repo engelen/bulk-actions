@@ -23,7 +23,8 @@ class WPBA_BulkAction_Post_ChangePostVisibility extends WPBA_BulkAction_Abstract
 			return;
 		}
 
-		$post_visibility_label = $this->get_visibility_options()[ $params['post_visibility'] ];
+		$visibility_options = $this->get_visibility_options();
+		$post_visibility_label = $visibility_options[ $params['post_visibility'] ];
 
 		$messages = array();
 		$messages[] = sprintf( _n( 'Post visibility of %d item changed to "%s".', 'Post visibility of %d items changed to "%s".', $params['updated'], 'wpba' ), $params['updated'], $post_visibility_label );
